@@ -6,7 +6,12 @@
 </head>
 <body>
     <h1>Student Registration</h1>
-    <form action="{% url 'register' %}" method="post">
+    <p>Department: {{ department }}</p>
+    <p>Program: {{ program }}</p>
+    <p>Year of Study: {{ year_of_study }}</p>
+    <p>Semester: {{ semester }}</p>
+
+    <form action="{% url 'register_page' department=department program=program year_of_study=year_of_study semester=semester %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="department" value="{{ department }}">
         <input type="hidden" name="program" value="{{ program }}">

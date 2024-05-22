@@ -37,7 +37,7 @@
     <div class="container">
         <h1>Enroll in {{ program }}</h1>
         <p>You have chosen to enroll in the {{ program }} program under the {{ department }} department.</p>
-        <form action="{% url 'confirm_enrollment' %}" method="post">
+        <form action="{% url 'register_page' department=department program=program year_of_study=year_of_study semester=semester %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="department" value="{{ department }}">
             <input type="hidden" name="program" value="{{ program }}">

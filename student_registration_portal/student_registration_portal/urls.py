@@ -10,5 +10,6 @@ urlpatterns = [
     path('enroll/', views.enroll, name='enroll'),
     path('confirm-enrollment/', views.confirm_enrollment, name='confirm_enrollment'),
     path('register/', views.register_page, name='register_page'),
+    path('register/<str:department>/<str:program>/<int:year_of_study>/<int:semester>/', views.register_page, name='register_page'),
     path('', views.login_view, name='login'),  # Default route to login view
 ]

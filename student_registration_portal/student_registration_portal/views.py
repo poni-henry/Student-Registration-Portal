@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse
 
 def login_view(request):
     error_message = None
@@ -34,16 +35,26 @@ def enroll(request):
     if request.method == 'POST':
         department = request.POST.get('department')
         program = request.POST.get('program')
+        year_of_study = request.POST.get('year_of_study')
+        semester = request.POST.get('semester')
         context = {
             'department': department,
             'program': program,
+            'year_of_study': year_of_study,
+            'semester': semester,
         }
         return render(request, 'enroll.html', context)
     return redirect('home')
 
 @login_required
-def register_page(request):
-    return render(request, 'registration.html')
+def register_page(request, department, program, year_of_study, semester):
+    context = {
+        'department': department,
+        'program': program,
+        'year_of_study': year_of_study,
+        'semester': semester,
+    }
+    return render(request, 'registration.html', context)
 
 @login_required
 def confirm_enrollment(request):
@@ -53,7 +64,7 @@ def confirm_enrollment(request):
         year_of_study = request.POST.get('year_of_study')
         semester = request.POST.get('semester')
         # Redirect to the registration page with necessary parameters
-        return redirect('register_page', department=department, program=program, year_of_study=year_of_study, semester=semester)
+        return redirect(reverse('register_page', args=(department, program, year_of_study, semester)))
     return redirect('home')  # Redirect to home if not a POST request
 
 def logout_view(request):
