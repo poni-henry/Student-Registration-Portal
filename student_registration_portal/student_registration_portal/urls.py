@@ -27,7 +27,8 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),  # Your existing logout URL pattern
     path('', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     # ... other URL patterns for your application ...
-    path('', views.home, name='home'),  # Map root URL ('/') to the 'home' view function
+    path('', views.home_view, name='home'),  # Assuming your home view is named 'home_view'
+    # ... other URL patterns for your app
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

@@ -37,13 +37,20 @@ def login_view(request):
     context = {'error_message': error_message}
     return render(request, 'login.html', context)
 
-'''def home(request):
-    context = {}  # You can add context data for your homepage template here
-    return render(request, 'home.html', context)'''
-
 def home(request):
+    context = {}  # You can add context data for your homepage template here
+    return render(request, 'home.html', context)
+
+from django.shortcuts import render
+
+def home_view(request):
+    # ... (logic for your home page content)
+    context = {}  # Create a context dictionary if needed
+    return render(request, 'home.html', context)
+
+'''def home(request):
     # No template rendering needed
-    return HttpResponse('Welcome to the Student Registration Portal!')   # Example response
+    return HttpResponse('Welcome to the Student Registration Portal!')   # Example response'''
 
 def logout_view(request):
     logout(request)
