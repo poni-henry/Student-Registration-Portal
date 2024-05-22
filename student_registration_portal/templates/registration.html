@@ -3,30 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group button {
+            width: calc(100% - 22px); /* Adjusted width for input fields and buttons */
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-group button {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Student Registration</h1>
-    <p>Department: {{ department }}</p>
-    <p>Program: {{ program }}</p>
-    <p>Year of Study: {{ year_of_study }}</p>
-    <p>Semester: {{ semester }}</p>
+    <div class="container">
+        <h1>Student Registration</h1>
+        <p>Department: {{ department }}</p>
+        <p>Program: {{ program }}</p>
+        <p>Year of Study: {{ year_of_study }}</p>
+        <p>Semester: {{ semester }}</p>
+        <form action="{% url 'register_page' department=department program=program year_of_study=year_of_study semester=semester %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="department" value="{{ department }}">
+            <input type="hidden" name="program" value="{{ program }}">
+            <input type="hidden" name="year_of_study" value="{{ year_of_study }}">
+            <input type="hidden" name="semester" value="{{ semester }}">
 
-    <form action="{% url 'register_page' department=department program=program year_of_study=year_of_study semester=semester %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="department" value="{{ department }}">
-        <input type="hidden" name="program" value="{{ program }}">
-        <input type="hidden" name="year_of_study" value="{{ year_of_study }}">
-        <input type="hidden" name="semester" value="{{ semester }}">
+            <div class="form-group">
+                <label for="student_name">Student Name:</label>
+                <input type="text" name="student_name" id="student_name" required>
+            </div>
 
-        <label for="student_name">Student Name:</label>
-        <input type="text" name="student_name" id="student_name" required><br><br>
+            <div class="form-group">
+                <label for="registration_number">Registration Number:</label>
+                <input type="text" name="registration_number" id="registration_number" required>
+            </div>
 
-        <label for="registration_number">Registration Number:</label>
-        <input type="text" name="registration_number" id="registration_number" required><br><br>
-
-        <!-- Add any additional student details fields as needed -->
-
-        <button type="submit">Register</button>
-    </form>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -31,7 +31,7 @@
             <h2>Department of Computer Science</h2>
             <form action="{% url 'enroll' %}" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="department" value="cs">
+                <input type="hidden" name="department" value="Computer Science">
                 <select name="program">
                     {% for program in cs_programs %}
                         <option value="{{ program }}">{{ program }}</option>
@@ -45,7 +45,7 @@
             <h2>Department of Information Technology</h2>
             <form action="{% url 'enroll' %}" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="department" value="it">
+                <input type="hidden" name="department" value="Information Technology">
                 <select name="program">
                     {% for program in it_programs %}
                         <option value="{{ program }}">{{ program }}</option>

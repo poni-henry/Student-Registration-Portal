@@ -35,44 +35,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Enroll in {{ program }}</h1>
-        <p>You have chosen to enroll in the {{ program }} program under the {{ department }} department.</p>
-        <form action="{% url 'register_page' department=department program=program year_of_study=year_of_study semester=semester %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="department" value="{{ department }}">
-            <input type="hidden" name="program" value="{{ program }}">
-
-            <div class="form-group">
-                <label for="year_of_study">Year of Study</label>
-                <select name="year_of_study" id="year_of_study">
-                    <option value="1">Year 1</option>
-                    <option value="2">Year 2</option>
-                    <option value="3">Year 3</option>
-                    <option value="4">Year 4</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="semester">Semester</label>
-                <select name="semester" id="semester">
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="student_status">Enrollment Status</label>
-                <select name="student_status" id="student_status">
-                    <option value="new">New Student</option>
-                    <option value="continuing">Continuing Student</option>
-                    <option value="stay_put">Stay Put</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Confirm Enrollment</button>
-            </div>
-        </form>
-    </div>
+    <h1>Enroll in {{ program }}</h1>
+    <p>You have chosen to enroll in the {{ program }} program under the {{ department }} department.</p>
+    <form action="{% url 'confirm_enrollment' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="department" value="{{ department }}">
+        <input type="hidden" name="program" value="{{ program }}">
+        <div class="form-group">
+            <label for="year_of_study">Year of Study</label>
+            <select name="year_of_study" id="year_of_study">
+                <option value="1">Year 1</option>
+                <option value="2">Year 2</option>
+                <option value="3">Year 3</option>
+                <option value="4">Year 4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="semester">Semester</label>
+            <select name="semester" id="semester">
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit">Confirm Enrollment</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
