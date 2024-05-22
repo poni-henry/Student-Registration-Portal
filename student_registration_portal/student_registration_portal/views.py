@@ -41,6 +41,25 @@ def home(request):
     context = {}  # You can add context data for your homepage template here
     return render(request, 'home.html', context)
 
+def programs_view(request):
+    if request.method == 'POST':
+        selected_department = request.POST.get('department')
+
+        # Sample Program Data (Replace with your actual data retrieval logic)
+        program_data = {
+            'cs': ['Computer Science', 'Software Engineering', 'Data Science'],
+            'it': ['Information Technology', 'Cybersecurity', 'Network Administration'],
+        }
+
+        # Access programs based on selected department
+        programs = program_data.get(selected_department, [])  # Return empty list if department not found
+
+        context = {'selected_department': selected_department, 'programs': programs}
+        return render(request, 'programs.html', context)
+
+    # Handle GET requests (optional)
+    return render(request, 'home.html')  # Can redirect back to home page if needed
+
 from django.shortcuts import render
 
 '''def home(request):
