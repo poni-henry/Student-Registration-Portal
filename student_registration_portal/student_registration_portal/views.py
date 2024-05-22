@@ -43,11 +43,6 @@ def home(request):
 
 from django.shortcuts import render
 
-def home_view(request):
-    # ... (logic for your home page content)
-    context = {}  # Create a context dictionary if needed
-    return render(request, 'home.html', context)
-
 '''def home(request):
     # No template rendering needed
     return HttpResponse('Welcome to the Student Registration Portal!')   # Example response'''
