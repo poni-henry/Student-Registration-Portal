@@ -42,19 +42,19 @@ def enroll(request):
     return redirect('home')
 
 @login_required
+def register_page(request):
+    return render(request, 'registration.html')
+
+@login_required
 def confirm_enrollment(request):
     if request.method == 'POST':
         department = request.POST.get('department')
         program = request.POST.get('program')
         year_of_study = request.POST.get('year_of_study')
         semester = request.POST.get('semester')
-        student_status = request.POST.get('student_status')
-        # Add logic to save enrollment details
-        # For now, just print to console (or handle appropriately)
-        print(f"Department: {department}, Program: {program}, Year of Study: {year_of_study}, Semester: {semester}, Status: {student_status}")
-        # Redirect to a success page or back to home
-        return redirect('home')
-    return redirect('home')
+        # Redirect to the registration page with necessary parameters
+        return redirect('register_page', department=department, program=program, year_of_study=year_of_study, semester=semester)
+    return redirect('home')  # Redirect to home if not a POST request
 
 def logout_view(request):
     logout(request)
