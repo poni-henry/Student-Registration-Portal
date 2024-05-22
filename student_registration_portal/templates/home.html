@@ -3,15 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Department Programs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .department {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Select Your Department</h1>
-    <form action="" method="post">  <select name="department">
-            <option value="cs">Department of Computer Science</option>
-            <option value="it">Department of Information Technology</option>
-        </select>
-        <button type="submit">View Programs</button>
-    </form>
-
+    <div class="container">
+        <h1>Department Programs</h1>
+        
+        <div class="department">
+            <h2>Department of Computer Science</h2>
+            <form action="{% url 'enroll' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="department" value="cs">
+                <select name="program">
+                    {% for program in cs_programs %}
+                        <option value="{{ program }}">{{ program }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Enroll</button>
+            </form>
+        </div>
+        
+        <div class="department">
+            <h2>Department of Information Technology</h2>
+            <form action="{% url 'enroll' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="department" value="it">
+                <select name="program">
+                    {% for program in it_programs %}
+                        <option value="{{ program }}">{{ program }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Enroll</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

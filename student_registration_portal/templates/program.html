@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ selected_department }} Programs</title>
+    <title>{{ selected_department }}</title>
 </head>
 <body>
     <h2>Programs Offered in {{ selected_department }}</h2>
-    <ul>
-        {% for program in programs %}
-            <li>{{ program }}</li>
+    <select>
+        {% for program in selected_programs %}
+            <option>{{ program }}</option>
         {% endfor %}
-    </ul>
+    </select>
 </body>
 </html>
