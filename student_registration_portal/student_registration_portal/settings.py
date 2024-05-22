@@ -68,6 +68,11 @@ TEMPLATES = [
     },
 ]
 
+# settings.py
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 
 WSGI_APPLICATION = 'student_registration_portal.wsgi.application'
 
