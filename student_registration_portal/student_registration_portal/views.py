@@ -46,7 +46,12 @@ def confirm_enrollment(request):
     if request.method == 'POST':
         department = request.POST.get('department')
         program = request.POST.get('program')
+        year_of_study = request.POST.get('year_of_study')
+        semester = request.POST.get('semester')
+        student_status = request.POST.get('student_status')
         # Add logic to save enrollment details
+        # For now, just print to console (or handle appropriately)
+        print(f"Department: {department}, Program: {program}, Year of Study: {year_of_study}, Semester: {semester}, Status: {student_status}")
         # Redirect to a success page or back to home
         return redirect('home')
     return redirect('home')

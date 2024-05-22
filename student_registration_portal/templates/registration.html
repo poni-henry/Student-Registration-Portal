@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h1>Student Registration</h1>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="department" value="{{ department }}">
+        <input type="hidden" name="program" value="{{ program }}">
+        <input type="hidden" name="year_of_study" value="{{ year_of_study }}">
+        <input type="hidden" name="semester" value="{{ semester }}">
+
+        <label for="student_name">Student Name:</label>
+        <input type="text" name="student_name" id="student_name" required><br><br>
+
+        <label for="registration_number">Registration Number:</label>
+        <input type="text" name="registration_number" id="registration_number" required><br><br>
+
+        <!-- Add any additional student details fields as needed -->
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
