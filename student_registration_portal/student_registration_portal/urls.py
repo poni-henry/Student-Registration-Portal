@@ -23,8 +23,11 @@ from django.urls import path, include  # For including authentication URLs
 
 app_name = 'accounts'
 urlpatterns = [
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
+    path('login/', views.login_view, name='login'),  # Your existing login URL pattern
+    path('logout/', views.logout_view, name='logout'),  # Your existing logout URL pattern
+    path('', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    # ... other URL patterns for your application ...
+    path('', views.home, name='home'),  # Map root URL ('/') to the 'home' view function
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

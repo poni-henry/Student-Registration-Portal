@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from .forms import LoginForm
+from django.http import HttpResponse
 
 def login_view(request):
     if request.method == 'POST':
@@ -15,6 +16,14 @@ def login_view(request):
     else:
         form = LoginForm()
     return render(request, 'login.html', context={'form': form})
+
+'''def home(request):
+    context = {}  # You can add context data for your homepage template here
+    return render(request, 'home.html', context)'''
+
+def home(request):
+    # No template rendering needed
+    return HttpResponse('Welcome to the Student Registration Portal!')   # Example response
 
 def logout_view(request):
     logout(request)
