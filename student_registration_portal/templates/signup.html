@@ -4,14 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <!-- Your CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .error {
+            color: red;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group button {
+            width: calc(100% - 22px); /* Adjusted width for input fields and buttons */
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-group button {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sign Up</h1>
-    <form action="{% url 'signup' %}" method="post">
-        {% csrf_token %}
-        <!-- Sign-up form fields here -->
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password" id="confirm_password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

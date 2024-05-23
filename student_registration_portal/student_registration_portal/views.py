@@ -22,6 +22,13 @@ def login_view(request):
             error_message = 'Invalid username or password'
     return render(request, 'login.html', {'form': form, 'error_message': error_message})
 
+def signup_view(request):
+    if request.method == 'POST':
+        # Handle sign-up form submission
+        pass
+    else:
+        return render(request, 'signup.html')
+
 @login_required
 def home(request):
     program_data = {
