@@ -31,36 +31,44 @@
             padding: 10px;
             font-size: 16px;
         }
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-    <h1>Enroll in {{ program }}</h1>
-    <p>You have chosen to enroll in the {{ program }} program under the {{ department }} department.</p>
-    <form action="{% url 'confirm_enrollment' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="department" value="{{ department }}">
-        <input type="hidden" name="program" value="{{ program }}">
-        <div class="form-group">
-            <label for="year_of_study">Year of Study</label>
-            <select name="year_of_study" id="year_of_study">
-                <option value="1">Year 1</option>
-                <option value="2">Year 2</option>
-                <option value="3">Year 3</option>
-                <option value="4">Year 4</option>
-            </select>
+        <h1>Enroll in {{ program }}</h1>
+        <p>You have chosen to enroll in the {{ program }} program under the {{ department }} department.</p>
+        <form action="{% url 'confirm_enrollment' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="department" value="{{ department }}">
+            <input type="hidden" name="program" value="{{ program }}">
+            <div class="form-group">
+                <label for="year_of_study">Year of Study</label>
+                <select name="year_of_study" id="year_of_study">
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                    <option value="4">Year 4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select name="semester" id="semester">
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Confirm Enrollment</button>
+            </div>
+        </form>
+        <!-- Back button -->
+        <div class="back-button">
+            <a href="#" onclick="history.back();">Back</a>
         </div>
-        <div class="form-group">
-            <label for="semester">Semester</label>
-            <select name="semester" id="semester">
-                <option value="1">Semester 1</option>
-                <option value="2">Semester 2</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <button type="submit">Confirm Enrollment</button>
-        </div>
-    </form>
-</div>
+    </div>
 </body>
 </html>
