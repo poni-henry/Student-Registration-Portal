@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=100, label="Username")
@@ -13,8 +15,3 @@ class LoginForm(forms.Form):
         if not user:
             raise forms.ValidationError("Invalid username or password.")
         return cleaned_data
-
-class CustomUserCreationForm(UserCreationForm):
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'email', 'password1', 'password2')

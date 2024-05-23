@@ -9,7 +9,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from io import BytesIO
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationForm
+
 
 def login_view(request):
     error_message = None

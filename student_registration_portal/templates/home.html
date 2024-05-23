@@ -21,6 +21,11 @@
         .department {
             margin-bottom: 20px;
         }
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +58,10 @@
                 </select>
                 <button type="submit">Enroll</button>
             </form>
+        </div>
+        <!-- Logout button -->
+        <div class="logout-button">
+            <a href="{% url 'logout' %}">Logout</a>
         </div>
     </div>
 </body>
