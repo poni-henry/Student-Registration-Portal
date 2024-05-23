@@ -13,3 +13,8 @@ class LoginForm(forms.Form):
         if not user:
             raise forms.ValidationError("Invalid username or password.")
         return cleaned_data
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'password1', 'password2')

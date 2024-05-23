@@ -8,6 +8,8 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from io import BytesIO
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
 
 def login_view(request):
     error_message = None
@@ -24,10 +26,19 @@ def login_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        # Handle sign-up form submission
-        pass
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')  # Redirect to home page or another page after successful signup
+        else:
+            return render(request, 'signup.html', {'form': form})
     else:
-        return render(request, 'signup.html')
+        form = CustomUserCreationForm()
+        return render(request, 'signup.html', {'form': form})
+
+    return HttpResponse("Unhandled request method", status=400)
+
 
 @login_required
 def home(request):
