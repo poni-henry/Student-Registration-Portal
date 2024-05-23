@@ -1,0 +1,17 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <!-- Your CSS styles here -->
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+        <!-- Sign-up form fields here -->
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
