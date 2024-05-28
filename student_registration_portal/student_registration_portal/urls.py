@@ -12,5 +12,6 @@ urlpatterns = [
     path('confirm-enrollment/', views.confirm_enrollment, name='confirm_enrollment'),
     path('register/', views.register_page, name='register_page'),
     path('register/<str:department>/<str:program>/<int:year_of_study>/<int:semester>/', views.register_page, name='register_page'),
+    path('generate-invoice/<str:department>/<str:program>/<int:year_of_study>/<int:semester>/', views.generate_invoice, name='generate_invoice'),
     path('', views.login_view, name='login'),  # Default route to login view
 ]
