@@ -13,14 +13,31 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center; /* Center the content */
+    }
+    .logo {
+      width: 100px; /* Adjust the logo size */
+      margin-bottom: 20px; /* Space between the logo and form */
+    }
+    h1 {
+      margin-bottom: 20px;
     }
     .error {
       color: red;
+    }
+    form {
+      text-align: left; /* Left-align the form elements */
+      display: inline-block; /* Ensure the form is inline for center alignment */
+    }
+    a {
+      display: block;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo"> <!-- Add your logo image here -->
     <h1>Student Portal Login</h1>
     <form method="post">
       {% csrf_token %}
@@ -37,7 +54,7 @@
         </div>
       {% endif %}
     </form>
-  <a href="{% url 'signup' %}">Sign Up</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
   </div>
 </body>
 </html>

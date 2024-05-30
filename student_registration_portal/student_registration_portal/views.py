@@ -23,10 +23,10 @@ def login_view(request):
         else:
             error_message = 'Invalid username or password'
     return render(request, 'login.html', {'form': form, 'error_message': error_message})
-'''
+
 def signup_view(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -34,11 +34,11 @@ def signup_view(request):
         else:
             return render(request, 'signup.html', {'form': form})
     else:
-        form = CustomUserCreationForm()
+        form = UserCreationForm()
         return render(request, 'signup.html', {'form': form})
 
     return HttpResponse("Unhandled request method", status=400)
-'''
+
 
 @login_required
 def home(request):
