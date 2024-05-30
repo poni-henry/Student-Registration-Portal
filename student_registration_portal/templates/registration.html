@@ -43,10 +43,17 @@
             top: 10px;
             right: 10px;
         }
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        {% load static %}
+        <img src="{% static 'C:\Users\Poni\Desktop\Student_Registration_Portal\student_registration_portal\static\admin\img\download.png' %}" alt="Logo" class="logo">
         <h1>Student Registration</h1>
         <p>Department: {{ department }}</p>
         <p>Program: {{ program }}</p>

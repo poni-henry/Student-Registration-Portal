@@ -16,6 +16,10 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+            .logo {
+             width: 100px; /* Adjust the logo size */
+             margin-bottom: 20px; /* Space between the logo and form */
+            }
         .error {
             color: red;
         }
@@ -41,6 +45,8 @@
 </head>
 <body>
     <div class="container">
+        {% load static %}
+        <img src="{% static 'C:\Users\Poni\Desktop\Student_Registration_Portal\student_registration_portal\static\admin\img\download.png' %}" alt="Logo" class="logo">
         <h1>Sign Up</h1>
         <form action="{% url 'signup' %}" method="post">
             {% csrf_token %}
