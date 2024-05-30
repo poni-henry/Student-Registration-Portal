@@ -7,26 +7,45 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0; /* Change the background color here */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Make body take full viewport height */
         }
         .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
+            max-width: 600px; /* Increased container size */
+            width: 100%;
+            padding: 40px; /* Adjusted padding for better spacing */
             border: 1px solid #ccc;
             border-radius: 5px;
+            text-align: center;
+            height: 80vh; /* Make container take most of viewport height */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff; /* Change the background color here */
+            background-color: #fff; /* Container background color */
+            overflow-y: auto; /* Allow scrolling if content overflows */
+            box-sizing: border-box; /* Include padding and border in total width and height */
         }
         .logo {
-                display: block;
-                margin: 0 auto 20px auto; /* Center the logo and add space below it */
-                width: 100px; /* Adjust the logo size */
-            }
+            display: block;
+            margin: 0 auto 20px auto; /* Center the logo and add space below it */
+            width: 100px; /* Adjust the logo size */
+        }
         h1, h2 {
             text-align: center;
         }
         .department {
             margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px; /* Increased margin for better spacing */
+        }
+        .form-group select,
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px; /* Add space between select and button */
         }
         .logout-button {
             position: absolute;
@@ -38,19 +57,23 @@
 <body>
     <div class="container">
         {% load static %}
-        <img src="{% static 'C:\Users\Poni\Desktop\Student_Registration_Portal\student_registration_portal\static\admin\img\download.png' %}" alt="Logo" class="logo">
+        <img src="{% static 'admin/img/download.png' %}" alt="Logo" class="logo">
         <h1>Department Programs</h1>
         <div class="department">
             <h2>Department of Computer Science</h2>
             <form action="{% url 'enroll' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="department" value="Computer Science">
-                <select name="program">
-                    {% for program in cs_programs %}
-                        <option value="{{ program }}">{{ program }}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit">Enroll</button>
+                <div class="form-group">
+                    <select name="program">
+                        {% for program in cs_programs %}
+                            <option value="{{ program }}">{{ program }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Enroll</button>
+                </div>
             </form>
         </div>
         
@@ -59,12 +82,16 @@
             <form action="{% url 'enroll' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="department" value="Information Technology">
-                <select name="program">
-                    {% for program in it_programs %}
-                        <option value="{{ program }}">{{ program }}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit">Enroll</button>
+                <div class="form-group">
+                    <select name="program">
+                        {% for program in it_programs %}
+                            <option value="{{ program }}">{{ program }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Enroll</button>
+                </div>
             </form>
         </div>
         <!-- Logout button -->
