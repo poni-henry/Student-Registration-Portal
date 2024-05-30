@@ -6,6 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Change the background color here */
         }
         .container {
             max-width: 600px;
@@ -14,7 +15,13 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* Change the background color here */
         }
+        .logo {
+                display: block;
+                margin: 0 auto 20px auto; /* Center the logo and add space below it */
+                width: 100px; /* Adjust the logo size */
+            }
         h1, h2 {
             text-align: center;
         }
@@ -30,8 +37,9 @@
 </head>
 <body>
     <div class="container">
+        {% load static %}
+        <img src="{% static 'C:\Users\Poni\Desktop\Student_Registration_Portal\student_registration_portal\static\admin\img\download.png' %}" alt="Logo" class="logo">
         <h1>Department Programs</h1>
-        
         <div class="department">
             <h2>Department of Computer Science</h2>
             <form action="{% url 'enroll' %}" method="post">
