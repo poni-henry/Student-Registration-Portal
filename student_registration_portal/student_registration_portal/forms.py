@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
+from .models import CustomUser
 
 
 class LoginForm(forms.Form):
@@ -15,3 +16,10 @@ class LoginForm(forms.Form):
         if not user:
             raise forms.ValidationError("Invalid username or password.")
         return cleaned_data
+    
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Enter a valid email address.')
+
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'password1', 'password2')

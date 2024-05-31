@@ -43,8 +43,8 @@ def signup_view(request):
 @login_required
 def home(request):
     program_data = {
-        'Computer Science': ['Bachelor of Science (BS) in Computer Science', 'Bachelor of Arts (BA) in Computer Science', 'Master of Science (MS) in Computer Science', 'Ph.D. in Computer Science'],
-        'Information Technology': ['Bachelor of Science (BS) in Information Technology', 'Cybersecurity', 'Master of Science (MS) in Information Technology'],
+        'Computer Science': ['','Diploma in Computer Science', 'Bachelor of Science (BS) in Computer Science', 'Master of Science (MS) in Computer Science'],
+        'Information Technology': ['','Diploma in Information Technology','Bachelor of Science (BS) in Information Technology', 'Bachelor of Science (BS) in Cybersecurity', 'Master of Science (MS) in Information Technology'],
     }
 
     context = {
