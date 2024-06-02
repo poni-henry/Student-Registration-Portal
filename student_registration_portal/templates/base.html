@@ -6,13 +6,18 @@
     <title>{% block title %}My Website{% endblock %}</title>
 </head>
 <body>
+    <h1>WELCOME TO SCHOOL OF COMPUTER SCIENCE AND INFORMATION TECHNOLOGY (SCSIT)</h1>
+    <form action="{% url 'login' %}" method="post">
+    <p>
+        University of Juba established the Computer Studies Centre (CSC) in July 1996. In accordance with the resolution of the Senate and the authorization of University of Juba Council (statute number 15). The Centre was opened with the latest technical specifications and its main aim was to meet the practical requirement for short and intermediate Computer Skills training courses for government and private institutions as well as individual applicants. Following the increase in the demand for computer graduates, the Centre was upgraded in April 2009 to a full School of Computer Science and Information Technology (SCSIT) offering two Bachelor of Science degree programs (5 years) in either Computer Science or Inform
+    </p>
     <!-- Navigation bar with a back button -->
     <nav>
         <a href="#" onclick="history.back();">Back</a>
     </nav>
-
-    <!-- Content specific to each page -->
-    {% block content %}
-    {% endblock %}
+        <!-- Login button -->
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>
 </body>
 </html>

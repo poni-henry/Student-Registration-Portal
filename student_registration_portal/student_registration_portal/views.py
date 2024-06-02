@@ -90,7 +90,7 @@ def confirm_enrollment(request):
         return redirect('register_page', department=department, program=program, year_of_study=year_of_study, semester=semester)
     return redirect('home')  # Redirect to home if not a POST request
 
-def generate_invoice(request, department, program, year_of_study, semester):
+def generate_invoice(request, department, program, year_of_study, semester,student_name,registration_number,student_index_number,contact_no,state,county,next_of_kin,next_of_kin_contact,gender, admission,date_of_birth):
     # Create a BytesIO buffer to store the PDF
     buffer = BytesIO()
 
@@ -103,6 +103,17 @@ def generate_invoice(request, department, program, year_of_study, semester):
         ['Program', program],
         ['Year of Study', str(year_of_study)],
         ['Semester', str(semester)],
+        ['Student Name', student_name],
+        ['Registration Number', str(registration_number)],
+        ['Student Index Number', str(student_index_number)],
+        ['Contact Number', str(contact_no)],
+        ['State', state],
+        ['County',county],
+        ['Next of Kin',next_of_kin],
+        ['Next of Kin Contact',str(next_of_kin_contact)],
+        ['Gender',gender],
+        ['Admission',admission],
+        ['Date of Birth',str(date_of_birth)],
         # Add more details as needed
     ]
 
