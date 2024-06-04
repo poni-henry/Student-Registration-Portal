@@ -9,7 +9,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from io import BytesIO
 from django.contrib.auth.forms import UserCreationForm
-
+from .models import Student  # Import the Student model
 
 def login_view(request):
     error_message = None
@@ -69,8 +69,44 @@ def enroll(request):
         return render(request, 'enroll.html', context)
     return redirect('home')
 
+
 @login_required
 def register_page(request, department=None, program=None, year_of_study=None, semester=None):
+    if request.method == 'POST':
+        # Extract form data
+        student_name = request.POST.get('student_name')
+        registration_number = request.POST.get('registration_number')
+        student_index_number = request.POST.get('student_index_number')
+        contact_no = request.POST.get('contact_no')
+        state = request.POST.get('state')
+        county = request.POST.get('county')
+        next_of_kin = request.POST.get('next_of_kin')
+        next_of_kin_contact = request.POST.get('next_of_kin_contact')
+        gender = request.POST.get('gender')
+        admission = request.POST.get('admission')
+        date_of_birth = request.POST.get('date_of_birth')
+
+        # Create a new student instance and save it to the database
+        student = Student(
+            student_name=student_name,
+            registration_number=registration_number,
+            student_index_number=student_index_number,
+            contact_no=contact_no,
+            state=state,
+            county=county,
+            next_of_kin=next_of_kin,
+            next_of_kin_contact=next_of_kin_contact,
+            gender=gender,
+            admission=admission,
+            date_of_birth=date_of_birth
+        )
+        student.save()
+
+        # Generate the invoice PDF
+        invoice = generate_invoice(request, department, program, year_of_study, semester, student_name, registration_number, student_index_number, contact_no, state, county, next_of_kin, next_of_kin_contact, gender, admission, date_of_birth)
+        return invoice
+
+    # If it's a GET request, render the registration page as before
     context = {
         'department': department,
         'program': program,
@@ -78,6 +114,7 @@ def register_page(request, department=None, program=None, year_of_study=None, se
         'semester': semester,
     }
     return render(request, 'registration.html', context)
+
 
 @login_required
 def confirm_enrollment(request):

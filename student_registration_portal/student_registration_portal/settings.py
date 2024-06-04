@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'student_registration_portal',  # Updated app name
 ]
 
 MIDDLEWARE = [
@@ -52,10 +53,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'student_registration_portal.urls'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Point to the templates directory
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,12 +72,6 @@ TEMPLATES = [
         },
     },
 ]
-
-# settings.py
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-]
-
 
 WSGI_APPLICATION = 'student_registration_portal.wsgi.application'
 
@@ -131,4 +130,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#AUTH_USER_MODEL = 'accounts.CustomUser'
+# Custom user model
+AUTH_USER_MODEL = 'student_registration_portal.CustomUser'
